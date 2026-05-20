@@ -2,360 +2,1258 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Smart Office • Institucional</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet" />
     <style>
-        body {
+        :root {
+            --navy: #02103c;
+            --navy-mid: #05274f;
+            --navy-light: #0f3a6e;
+            --gold: #c8893a;
+            --gold-light: #e8b06a;
+            --gold-pale: #fdf3e7;
+            --warm: #fff8f0;
+            --cream: #fef9f4;
+            --text: #0e1b30;
+            --text-muted: #4a5568;
+            --text-light: #8a96aa;
+            --border: rgba(2, 16, 60, 0.1);
+            --border-gold: rgba(200, 137, 58, 0.25);
+            --shadow-sm: 0 2px 16px rgba(2, 16, 60, 0.07);
+            --shadow-md: 0 6px 32px rgba(2, 16, 60, 0.12);
+            --shadow-lg: 0 16px 48px rgba(2, 16, 60, 0.16);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
             scroll-behavior: smooth;
-            font-size: 20px;
-            background-color: #f5f6fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #fff;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gold-pale);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
         header {
-            background: #02103c;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(2, 16, 60, 0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(200, 137, 58, 0.2);
+            transition: box-shadow var(--transition);
         }
 
-        header a.nav-link {
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
             color: #fff !important;
-            transition: 0.3s;
+            letter-spacing: -0.02em;
         }
 
-        header a.nav-link:hover {
-            color: #c7d7ff !important;
+        .navbar-brand span {
+            color: var(--gold);
         }
 
-        h2 {
-            text-align: center;
+        .nav-link {
+            font-size: 0.82rem !important;
+            font-weight: 500 !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            letter-spacing: 0.04em;
+            transition: color var(--transition) !important;
+            position: relative;
+            padding-bottom: 4px !important;
         }
 
-        p {
-            text-align: center;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1.5px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
         }
 
-        .cant {
-            text-align: justify;
+        .nav-link:hover {
+            color: #fff !important;
         }
 
-        .smart_office {
-            background-color: #cfd9f3;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .cantinho_valle {
-            background: linear-gradient(#ffe9d2, #ffdfc1);
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .logos img {
-            width: 40%;
-            max-width: 300px;
-            border: 3px solid #02103c;
-            border-radius: 15px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .logos img:hover {
-            box-shadow: 3px 8px 15px #ce8440;
-        }
-
-
-        .card {
-            min-height: 150px;
-            border: none;
-            text-align: center;
-            border-radius: 14px;
-            padding: 25px;
-            background: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 3px 8px 20px #00000026;
-        }
-        .card-img{
-            width: 53%;
-            border: 3px solid black;
-            border-radius: 15px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-        .card-img:hover{
-            transform: translateY(-6px);
-            box-shadow: 4px 10px 15px #ce8440;
+        .nav-link:hover::after {
+            transform: scaleX(1);
         }
 
         #hero {
-            padding: 120px 20px;
-            background: linear-gradient(135deg, #204b7c, #05274f);
+            min-height: 100vh;
+            background: linear-gradient(145deg, #02103c 0%, #05274f 50%, #0a3565 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 20px 80px;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(200, 137, 58, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 137, 58, 0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 137, 58, 0.12) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(200, 137, 58, 0.15);
+            border: 1px solid rgba(200, 137, 58, 0.35);
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 800;
             color: #fff;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.9s 0.4s forwards;
+        }
+
+        .hero-title .gold {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeUp 0.9s 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeUp 0.9s 0.8s forwards;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            padding: 0.85rem 2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(200, 137, 58, 0.4);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            padding: 0.85rem 2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ── DIVIDER ── */
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border: none;
+            opacity: 0.4;
+        }
+
+        /* ── SECTION SHARED ── */
+        .section-wrap {
+            padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
         }
 
         .section-title {
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.03em;
+            line-height: 1.15;
         }
 
-        footer {
-            background: #0b1e33;
-            color: #fff;
-            padding: 40px 0;
-            margin-top: 50px;
+        .section-title .accent {
+            color: var(--gold);
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.85;
+            font-weight: 300;
+            max-width: 620px;
+            margin: 1rem auto 0;
+        }
+
+        /* ── SMART OFFICE SECTION ── */
+        .so-section {
+            background: #fff;
+        }
+
+        /* ── QUEM SOMOS ── */
+        .about-card {
+            background: linear-gradient(135deg, #f7faff 0%, #eef4ff 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--navy), var(--navy-light));
+        }
+
+        .about-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            text-align: left;
+            font-weight: 300;
+        }
+
+        /* ── MVV ── */
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .mvv-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mvv-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--navy), var(--navy-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .mvv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(2, 16, 60, 0.2);
+        }
+
+        .mvv-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .mvv-icon {
+            width: 48px;
+            height: 48px;
+            background: #eef4ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .mvv-card h5 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+        }
+
+        .mvv-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            text-align: left;
+        }
+
+        /* ── VALORES PILLS ── */
+        .valores-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .valor-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f0f4ff;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 0.45rem 1rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .valor-pill span {
+            font-size: 0.9rem;
+        }
+
+        /* ── TEAM ── */
+        .team-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
             text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .team-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0 auto 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .team-card h5 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .team-role {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ── CANTINHO SECTION ── */
+        .cantinho-section {
+            background: var(--warm);
+        }
+
+        /* ── CANTINHO ABOUT ── */
+        .cantinho-about {
+            background: linear-gradient(135deg, #fffaf4 0%, #fff3e3 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cantinho-about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+
+        .cantinho-about p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        /* ── CARDÁPIO ── */
+        .menu-card {
+            background: #fff;
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold);
+        }
+
+        .menu-emoji {
+            font-size: 2rem;
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            background: var(--gold-pale);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-card h5 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            text-align: left;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .cardapio-img-wrap {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid var(--border-gold);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .cardapio-img-wrap:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(200, 137, 58, 0.25);
+        }
+
+        .cardapio-img-wrap img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ── LOGOS ── */
+        .logos-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: #fff;
+            border: 1.5px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(200, 137, 58, 0.2);
+        }
+
+        .logo-item img {
+            max-width: 180px;
+            max-height: 120px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* ── MVV CANTINHO ── */
+        .mvv-cantinho-card {
+            background: #fff;
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mvv-cantinho-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .mvv-cantinho-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mvv-cantinho-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .mvv-cantinho-card .mvv-icon {
+            background: var(--gold-pale);
+        }
+
+        .mvv-cantinho-card h5 {
+            color: #7a4e1a;
+        }
+
+        /* ── SUSTENTABILIDADE ── */
+        .sustent-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: #fff;
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .sustent-item:hover {
+            transform: translateX(6px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sustent-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            background: var(--gold-pale);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .sustent-item p {
+            text-align: left;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* ── CONTATO ── */
+        #contato {
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contato::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 50% 60% at 80% 50%, rgba(200, 137, 58, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 10% 80%, rgba(200, 137, 58, 0.07) 0%, transparent 70%);
+        }
+
+        #contato .section-label {
+            color: var(--gold-light);
+        }
+
+        #contato .section-title {
+            color: #fff;
+        }
+
+        #contato .section-desc {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-form-wrap {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .form-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.07) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 10px !important;
+            color: #fff !important;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            padding: 0.85rem 1rem;
+            transition: border-color var(--transition), background var(--transition);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.25) !important;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: rgba(200, 137, 58, 0.5) !important;
+            background: rgba(200, 137, 58, 0.07) !important;
+            box-shadow: none !important;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            padding: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            letter-spacing: 0.02em;
+            margin-top: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(200, 137, 58, 0.4);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #060f26;
+            border-top: 1px solid rgba(200, 137, 58, 0.15);
+            padding: 2rem clamp(1.5rem, 5vw, 4rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-brand {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-brand span {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-tag {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.25);
+            font-style: italic;
+        }
+
+        /* ── REVEAL ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.4);
+            }
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-card,
+            .cantinho-about {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-form-wrap {
+                padding: 1.75rem;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark container py-3">
-            <img src="Logotipo Smart Office.png" alt="Logo Smart Office" width="100" class="me-3">
-            <a class="navbar-brand fw-bold" href="#hero">Smart Office</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+    <header id="navbar">
+        <nav class="navbar navbar-expand-lg container py-3">
+            <a class="navbar-brand" href="#hero">
+                Smart<span>Office</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
+                style="color:rgba(255,255,255,0.7)">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navmenu">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto gap-1">
                     <li class="nav-item"><a href="#quem-somos" class="nav-link">Quem Somos</a></li>
                     <li class="nav-item"><a href="#mvv-smart" class="nav-link">Missão & Valores</a></li>
                     <li class="nav-item"><a href="#cantinho" class="nav-link">Cantinho do Valle</a></li>
                     <li class="nav-item"><a href="#cardapio" class="nav-link">Cardápio</a></li>
                     <li class="nav-item"><a href="#mvv-cantinho" class="nav-link">MVV Cantinho</a></li>
-                    <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+                    <li class="nav-item ms-2"><a href="#contato" class="btn-gold"
+                            style="padding:0.45rem 1.25rem; border-radius:100px; font-size:0.82rem; font-weight:600; text-decoration:none;">Contato</a>
+                    </li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <!-- HERO -->
-    <section id="hero" class="text-center">
-        <h1 class="fw-bold display-5">Smart Office</h1>
-        <p class="lead mt-3">Soluções administrativas inteligentes para impulsionar negócios.</p>
-    </section>
-
-    <!-- SMART OFFICE -->
-    <section class="smart_office">
-        <section id="quem-somos" class="container py-5">
-            <h2 class="section-title">Quem Somos – Smart Office</h2>
-            <p>A Smart Office é a empresa responsável por desenvolver, estruturar e acompanhar todo o planejamento
-                estratégico, <br> operacional e de gestão do projeto Cantinho do Valle. Como consultoria, sua atuação
-                engloba áreas administrativas, <br> financeiras, logísticas, marketing e recursos humanos, prestando
-                suporte direto e especializado ao cliente. </p>
-        </section>
-
-        <!-- MVV SMART OFFICE -->
-        <section id="mvv-smart" class="container py-5">
-            <h2 class="section-title">Missão, Visão e Valores – Smart Office</h2>
-            <ul>
-                <li><strong>Missão:</strong> Transformar o ambiente administrativo com organização, clareza e soluções
-                    eficientes.</li>
-                <li><strong>Visão:</strong> Ser referência em gestão moderna, estratégica e acessível para estudantes e
-                    empreendedores.</li>
-                <li><strong>Valores:</strong>
-                    <ul>
-                        <li><strong>Profissionalismo:</strong> Atuação responsável, ética e comprometida.</li>
-                        <li><strong>Inovação:</strong> Busca constante de soluções criativas e modernas.</li>
-                        <li><strong>Organização:</strong> Processos bem estruturados e planejamento claro.</li>
-                        <li><strong>Sustentabilidade:</strong> Incentivo a práticas conscientes e ecológicas.</li>
-                        <li><strong>Colaboração:</strong> Trabalho em equipe e comunicação eficiente entre
-                            departamentos.</li>
-                        <li><strong>Transparência:</strong> Clareza nos processos e alinhamento com o cliente.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-
-        <!-- INTEGRANTES -->
-        <section id="integrantes" class="container py-5">
-            <h2 class="section-title">Integrantes</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card p-3 text-center">
-                        <h5>Kaike Elias</h5>
-                        <p>Administrativo e Processos</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 text-center">
-                        <h5>Gabrielly Cordeiro</h5>
-                        <p>Financeiro</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 text-center">
-                        <h5>Igor Teles</h5>
-                        <p>Recursos Humanos</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-3 text-center">
-                        <h5>Kauã Salles</h5>
-                        <p>Marketing & Vendas</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-
-    <!-- CANTINHO DO VALLE -->
-    <section class="cantinho_valle">
-        <section id="cantinho" class="container py-5">
-            <h2 class="section-title">Cantinho do Valle</h2>
-            <p class="cant">A Cantinho do Valle é a empresa contratante da Smart Office e o foco central do projeto de
-                consultoria. Trata-se de uma doceria artesanal, dedicada à produção de doces de alta qualidade, com
-                ingredientes selecionados e opções sustentáveis, buscando unir sabor, inovação e responsabilidade
-                ambiental. A marca se posiciona como uma doceria moderna, acessível e voltada principalmente para
-                crianças, adolescentes e jovens adultos da comunidade, mantendo uma estética acolhedora e um atendimento
-                personalizado. Seu diferencial está na combinação entre produtos artesanais, embalagens ecológicas e uma
-                proposta de consumo consciente, alinhada às tendências atuais do mercado gastronômico. O Cantinho do
-                Valle tem como objetivo proporcionar experiências agradáveis e afetivas por meio de seus produtos,
-                criando um espaço que valoriza qualidade, criatividade e conexão com o público local.</p>
-        </section>
-
-        <!-- CARDÁPIO -->
-        <section id="cardapio" class="container py-5">
-            <h2 class="section-title">Cardápio</h2>
-            <div class="row g-4 align-items-start">
-                <div class="col-md-6 d-flex flex-column gap-4">
-                    <div class="card p-4 w-100">
-                        <h5>Brownie - MVP</h5>
-                        <p>Crocante por fora, macio por dentro.</p>
-                    </div>
-                    <div class="card p-4 w-100">
-                        <h5>Cookie Artesanal</h5>
-                        <p>Clássica e cremosa, preparada artesanalmente.</p>
-                    </div>
-                    <div class="card p-4 w-100">
-                        <h5>Alfajor</h5>
-                        <p>Com doce de leite e cobertura de chocolate.</p>
-                    </div>
-                </div>
-
-
-                <!-- COLUNA DIREITA (IMAGEM DO CARDÁPIO) -->
-                <div class="col-md-6 d-flex justify-content-center align-items-center">
-                    <img src="cardapio.png" alt="Cardápio Cantinho do Valle" class="img-fluid card-img ">
-                </div>
-            </div>
-        </section>
-
-        <!-- IDENTIDADE VISUAL -->
-        <section id="identidade" class="container py-5">
-            <h2 class="section-title">Identidade Visual</h2>
-            <div class="logos mt-4 mb-4">
-                <img src="Logo Doce Cantinho do Valle (1).png" alt="Logo Cantinho do Valle">
-                <img src="Logotipo Smart Office.png" alt="Logo Smart Office">
-            </div>
-        </section>
-
-        <!-- MVV CANTINHO -->
-        <section id="mvv-cantinho" class="container py-5">
-            <h2 class="section-title">Missão, Visão e Valores – Cantinho do Valle</h2>
-            <ul>
-                <li><strong>Missão:</strong> Oferecer doces artesanais de alta qualidade, acessíveis e sustentáveis,
-                    promovendo uma experiência gastronômica inovadora para os adolescentes, enquanto incentivamos o
-                    consumo consciente e a responsabilidade ambiental.</li>
-                <li><strong>Visão:</strong> Ser reconhecida como a doceria referência em inovação, sabor e
-                    sustentabilidade dentro da escola, expandindo para novos públicos e tornando-se um modelo de negócio
-                    sustentável e acessível.</li>
-                <li><strong>Valores:</strong>
-                    <ul>
-                        <li><strong>Sustentabilidade:</strong>Uso de ingredientes ecológicos e redução de desperdícios.
-                        </li>
-                        <li><strong>Inovação:</strong> Criação de doces únicos e modernos, atendendo às tendências do
-                            mercado.</li>
-                        <li><strong>Qualidade:</strong>Garantia de sabor e excelência em cada produto.</li>
-                        <li><strong>Respeito e Ética:</strong> Valorização da equipe e compromisso com a transparência e
-                            responsabilidade social.</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-
-        <!-- AÇÕES SUSTENTÁVEIS -->
-        <section id="acoes" class="container py-5">
-            <h2 class="section-title">Ações Sustentáveis e de Acessibilidade</h2>
-            <ul>
-                <li>Uso de embalagens ecológicas e recicláveis.</li>
-                <li>Comunicação acessível com textos claros e leitura facilitada.</li>
-                <li>Redução de desperdício de ingredientes durante a produção.</li>
-                <li>Implementação de ações de inclusão e respeito à diversidade.</li>
-            </ul>
-        </section>
-    </section>
-    <section id="contato" class="container py-5">
-        <h2 class="section-title">Entre em Contato</h2>
-        <p class="mb-4">Envie uma mensagem diretamente para o WhatsApp de uns dos integrantes.</p>
-
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-
-                <form id="formContato" class="p-4 rounded shadow bg-white mb-4">
-                    <div class="mb-3">
-                        <label class="form-label">Seu Nome</label>
-                        <input type="text" id="nome" class="form-control" placeholder="Digite seu nome" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Seu E-mail</label>
-                        <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Mensagem</label>
-                        <textarea id="mensagem" class="form-control" rows="4" placeholder="Digite sua mensagem"
-                            required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn w-100" style="background:#02103c; color:#fff; border:none;">
-                        Enviar pelo WhatsApp
-                    </button>
-                </form>
-
+    <section id="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div style="position:relative; z-index:1;">
+            <div class="hero-badge">TCC 2025 · Projeto Integrador</div>
+            <h1 class="hero-title">
+                Smart<span class="gold">Office</span><br>
+                <span
+                    style="font-size:0.55em; font-weight:300; color:rgba(255,255,255,0.7); letter-spacing:0.01em;">Soluções
+                    administrativas inteligentes</span>
+            </h1>
+            <p class="hero-subtitle">
+                Consultoria estratégica que estrutura, planeja e acompanha o projeto Cantinho do Valle com
+                profissionalismo e inovação.
+            </p>
+            <div class="hero-cta">
+                <a href="#quem-somos" class="btn-gold">Conhecer o projeto</a>
+                <a href="#contato" class="btn-ghost">Falar conosco</a>
             </div>
         </div>
     </section>
 
-    <script>
-        document.getElementById('formContato').addEventListener('submit', function (event) {
-            event.preventDefault();
+    <div class="so-section">
 
-            let nome = document.getElementById('nome').value;
-            let email = document.getElementById('email').value;
-            let mensagem = document.getElementById('mensagem').value;
+        <!-- QUEM SOMOS -->
+        <section id="quem-somos" class="section-wrap">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Sobre nós</span>
+                    <h2 class="section-title">Quem Somos – <span class="accent">Smart Office</span></h2>
+                </div>
+                <div class="about-card reveal">
+                    <p>
+                        A <strong>Smart Office</strong> é a empresa responsável por desenvolver, estruturar e acompanhar
+                        todo o planejamento estratégico, operacional e de gestão do projeto Cantinho do Valle. Como
+                        consultoria, sua atuação engloba áreas administrativas, financeiras, logísticas, marketing e
+                        recursos humanos, prestando suporte direto e especializado ao cliente.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-            let texto = `Olá! Me chamo ${nome}.\nMeu e-mail é: ${email}\n\nMensagem:\n${mensagem}`;
-            let url = `https://wa.me/5517981568889?text=${encodeURIComponent(texto)}`;
+        <hr class="section-divider mx-auto" style="max-width:200px; margin-bottom:0;" />
 
-            window.open(url, '_blank');
-        });
-    </script>
+        <section id="mvv-smart" class="section-wrap">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Identidade Organizacional</span>
+                    <h2 class="section-title">Missão, Visão e <span class="accent">Valores</span></h2>
+                    <p class="section-desc">Os pilares que guiam cada decisão e ação da Smart Office.</p>
+                </div>
 
-    <footer class="text-center">
-        <p>Smart Office • Cantinho do Valle • TCC – 2025</p>
+                <div class="mvv-grid mb-5">
+                    <div class="mvv-card reveal">
+                        <div class="mvv-icon">🎯</div>
+                        <h5>Missão</h5>
+                        <p>Transformar o ambiente administrativo com organização, clareza e soluções eficientes para
+                            cada cliente.</p>
+                    </div>
+                    <div class="mvv-card reveal">
+                        <div class="mvv-icon">🔭</div>
+                        <h5>Visão</h5>
+                        <p>Ser referência em gestão moderna, estratégica e acessível para estudantes e empreendedores.
+                        </p>
+                    </div>
+                    <div class="mvv-card reveal">
+                        <div class="mvv-icon">💎</div>
+                        <h5>Valores</h5>
+                        <div class="valores-list mt-3">
+                            <span class="valor-pill"><span>🤝</span> Profissionalismo</span>
+                            <span class="valor-pill"><span>💡</span> Inovação</span>
+                            <span class="valor-pill"><span>📋</span> Organização</span>
+                            <span class="valor-pill"><span>🌱</span> Sustentabilidade</span>
+                            <span class="valor-pill"><span>🔗</span> Colaboração</span>
+                            <span class="valor-pill"><span>🔍</span> Transparência</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider mx-auto" style="max-width:200px; margin-bottom:0;" />
+
+
+        <section id="integrantes" class="section-wrap">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Nossa Equipe</span>
+                    <h2 class="section-title">Integrantes da <span class="accent">Smart Office</span></h2>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-6 col-md-3">
+                        <div class="team-card reveal">
+                            <div class="team-avatar">KE</div>
+                            <h5>Kaike Elias</h5>
+                            <p class="team-role">Administrativo & Processos</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="team-card reveal">
+                            <div class="team-avatar">GC</div>
+                            <h5>Gabrielly Cordeiro</h5>
+                            <p class="team-role">Financeiro</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="team-card reveal">
+                            <div class="team-avatar">IT</div>
+                            <h5>Igor Teles</h5>
+                            <p class="team-role">Recursos Humanos</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="team-card reveal">
+                            <div class="team-avatar">KS</div>
+                            <h5>Kauã Salles</h5>
+                            <p class="team-role">Marketing & Vendas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="cantinho-section">
+
+        <section id="cantinho" class="section-wrap">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Empresa Parceira</span>
+                    <h2 class="section-title">Cantinho <span style="color:var(--gold);">do Valle</span></h2>
+                </div>
+                <div class="cantinho-about reveal">
+                    <p>
+                        A <strong>Cantinho do Valle</strong> é a empresa contratante da Smart Office e o foco central do
+                        projeto de consultoria. Trata-se de uma <strong>doceria artesanal</strong> dedicada à produção
+                        de doces de alta qualidade, com ingredientes selecionados e opções sustentáveis, buscando unir
+                        sabor, inovação e responsabilidade ambiental.
+                    </p>
+                    <p style="margin-top:1rem;">
+                        A marca se posiciona como uma doceria moderna, acessível e voltada principalmente para crianças,
+                        adolescentes e jovens adultos da comunidade, com uma estética acolhedora e atendimento
+                        personalizado. Seu diferencial está na combinação entre produtos artesanais, embalagens
+                        ecológicas e uma proposta de consumo consciente.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARDÁPIO -->
+        <section id="cardapio" class="section-wrap" style="padding-top:0;">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Produtos</span>
+                    <h2 class="section-title">Nosso <span style="color:var(--gold);">Cardápio</span></h2>
+                </div>
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 d-flex flex-column gap-3">
+                        <div class="menu-card reveal">
+                            <div class="menu-emoji">🍫</div>
+                            <div>
+                                <h5>Brownie – MVP</h5>
+                                <p>Crocante por fora, macio por dentro. O carro-chefe da doceria.</p>
+                            </div>
+                        </div>
+                        <div class="menu-card reveal">
+                            <div class="menu-emoji">🍪</div>
+                            <div>
+                                <h5>Cookie Artesanal</h5>
+                                <p>Clássico e cremoso, preparado artesanalmente com ingredientes selecionados.</p>
+                            </div>
+                        </div>
+                        <div class="menu-card reveal">
+                            <div class="menu-emoji">🍬</div>
+                            <div>
+                                <h5>Alfajor</h5>
+                                <p>Com doce de leite e cobertura de chocolate — irresistível.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal">
+                        <div class="cardapio-img-wrap">
+                            <img src="cardapio.png" alt="Cardápio Cantinho do Valle" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="identidade" class="section-wrap" style="padding-top:0;">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Branding</span>
+                    <h2 class="section-title">Identidade <span style="color:var(--gold);">Visual</span></h2>
+                </div>
+                <div class="logos-wrap reveal">
+                    <div class="logo-item">
+                        <img src="Logo Doce Cantinho do Valle (1).png" alt="Logo Cantinho do Valle" />
+                    </div>
+                    <div class="logo-item">
+                        <img src="Logotipo Smart Office.png" alt="Logo Smart Office" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MVV CANTINHO -->
+        <section id="mvv-cantinho" class="section-wrap" style="padding-top:0;">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Identidade da Marca</span>
+                    <h2 class="section-title">MVV – <span style="color:var(--gold);">Cantinho do Valle</span></h2>
+                </div>
+                <div class="mvv-grid mb-5">
+                    <div class="mvv-cantinho-card reveal">
+                        <div class="mvv-icon">🎯</div>
+                        <h5>Missão</h5>
+                        <p>Oferecer doces artesanais de alta qualidade, acessíveis e sustentáveis, promovendo uma
+                            experiência gastronômica inovadora e incentivando o consumo consciente.</p>
+                    </div>
+                    <div class="mvv-cantinho-card reveal">
+                        <div class="mvv-icon">🔭</div>
+                        <h5>Visão</h5>
+                        <p>Ser reconhecida como a doceria referência em inovação, sabor e sustentabilidade, expandindo
+                            para novos públicos como modelo de negócio sustentável e acessível.</p>
+                    </div>
+                    <div class="mvv-cantinho-card reveal">
+                        <div class="mvv-icon">💎</div>
+                        <h5>Valores</h5>
+                        <div class="valores-list mt-3">
+                            <span class="valor-pill"
+                                style="background:var(--gold-pale); border-color:var(--border-gold); color:#7a4e1a;"><span>🌱</span>
+                                Sustentabilidade</span>
+                            <span class="valor-pill"
+                                style="background:var(--gold-pale); border-color:var(--border-gold); color:#7a4e1a;"><span>💡</span>
+                                Inovação</span>
+                            <span class="valor-pill"
+                                style="background:var(--gold-pale); border-color:var(--border-gold); color:#7a4e1a;"><span>⭐</span>
+                                Qualidade</span>
+                            <span class="valor-pill"
+                                style="background:var(--gold-pale); border-color:var(--border-gold); color:#7a4e1a;"><span>🤝</span>
+                                Respeito & Ética</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AÇÕES SUSTENTÁVEIS -->
+        <section id="acoes" class="section-wrap" style="padding-top:0;">
+            <div class="container">
+                <div class="text-center mb-5 reveal">
+                    <span class="section-label">Responsabilidade</span>
+                    <h2 class="section-title">Ações Sustentáveis <span style="color:var(--gold);">&amp;
+                            Acessibilidade</span></h2>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="sustent-item reveal">
+                            <div class="sustent-icon">♻️</div>
+                            <p>Uso de embalagens ecológicas e recicláveis em todos os produtos.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="sustent-item reveal">
+                            <div class="sustent-icon">📝</div>
+                            <p>Comunicação acessível com textos claros e leitura facilitada para todos.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="sustent-item reveal">
+                            <div class="sustent-icon">🥄</div>
+                            <p>Redução de desperdício de ingredientes durante todo o processo de produção.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="sustent-item reveal">
+                            <div class="sustent-icon">🌍</div>
+                            <p>Implementação de ações de inclusão e respeito à diversidade na comunidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section-wrap">
+        <div class="container" style="position:relative; z-index:1;">
+            <div class="text-center mb-5 reveal">
+                <span class="section-label">Fale conosco</span>
+                <h2 class="section-title" style="color:#fff;">Entre em <span style="color:var(--gold);">Contato</span>
+                </h2>
+                <p class="section-desc">Envie uma mensagem diretamente para o WhatsApp de um dos integrantes.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-6">
+                    <div class="contact-form-wrap reveal">
+                        <form id="formContato">
+                            <div class="mb-3">
+                                <label class="form-label">Seu Nome</label>
+                                <input type="text" id="nome" class="form-control" placeholder="Digite seu nome"
+                                    required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Seu E-mail</label>
+                                <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail"
+                                    required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mensagem</label>
+                                <textarea id="mensagem" class="form-control" rows="4" placeholder="Digite sua mensagem"
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                💬 Enviar pelo WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">Smart<span>Office</span></div>
+        <p class="footer-copy">© 2025 Smart Office · Cantinho do Valle</p>
+        <p class="footer-tag">Projeto Integrador – TCC 2025</p>
     </footer>
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 60);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => observer.observe(el));
+
+        document.getElementById('formContato').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const mensagem = document.getElementById('mensagem').value;
+            const texto = `Olá! Me chamo ${nome}.\nMeu e-mail é: ${email}\n\nMensagem:\n${mensagem}`;
+            window.open(`https://wa.me/5517981568889?text=${encodeURIComponent(texto)}`, '_blank');
+        });
+    </script>
 </body>
 
 </html>
